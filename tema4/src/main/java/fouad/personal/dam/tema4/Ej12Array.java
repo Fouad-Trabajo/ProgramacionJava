@@ -1,6 +1,6 @@
 package fouad.personal.dam.tema4;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Ej12Array {
 
@@ -8,8 +8,6 @@ public class Ej12Array {
 
 		Scanner sc = new Scanner(System.in);
 
-		
-		
 		sc.close();
 
 	}

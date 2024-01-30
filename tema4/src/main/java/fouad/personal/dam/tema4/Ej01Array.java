@@ -1,6 +1,7 @@
 package fouad.personal.dam.tema4;
 
-import java.util.*;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Ej01Array {
 
@@ -28,7 +29,7 @@ public class Ej01Array {
 		
 		int [] Enteros=new int [20];
 		for (int i=0; i<Enteros.length;i++) {
-			int numAleatorio=(int)(Math.random()*31+20);
+			int numAleatorio=(int)(Math.random()*31+20); //Genera aleatoriamente número entre el 20 y 50
 			Enteros[i]=numAleatorio;
 			System.out.print(Enteros[i] + " ");
 		}
