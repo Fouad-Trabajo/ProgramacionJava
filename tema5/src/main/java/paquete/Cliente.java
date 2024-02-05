@@ -47,7 +47,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [nombre=" + nombre + ", numCuenta=" + numCuenta + ", saldo=" + saldo + "] \n";
+		return "\nCliente [nombre=" + nombre + ", numCuenta=" + numCuenta + ", saldo=" + saldo + "]";
 	}
 
 	@Override

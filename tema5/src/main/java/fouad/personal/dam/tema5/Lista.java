@@ -8,7 +8,7 @@ public class Lista {
 
 	// método remove
 	public String remove(int index) {
-		Nodo aBorrar = null; //Iteradores para recorrer la lista
+		Nodo aBorrar = null; // Iteradores para recorrer la lista
 		String info = null;
 		// primer elemento
 		if (!isEmpty() && (index < tamaño) && (index >= 0)) { // No se cumple, no tiene sentido recorrer la lista
@@ -28,14 +28,14 @@ public class Lista {
 				}
 				if (index == tamaño - 1) { // Resultaría que el elemento a borrar sería el último
 					anterior.setSig(null); // Le estoy diciendo que anterior apunte a null
-					info = aBorrar.getInfo(); //Se puede hacer al final
+					info = aBorrar.getInfo(); // Se puede hacer al final
 				} else { // Borrar elemento del medio
 					anterior.setSig(aBorrar.getSig());
-					aBorrar.setSig(null); //Para quitar la referencia
+					aBorrar.setSig(null); // Para quitar la referencia
 				}
-				//Vuelco la info que tenga el nodo aBorrar a mi String
-				info=aBorrar.getInfo();
-				aBorrar=null; //OPCIONAL
+				// Vuelco la info que tenga el nodo aBorrar a mi String
+				info = aBorrar.getInfo();
+				aBorrar = null; // OPCIONAL
 				tamaño--;
 			}
 		}
@@ -72,18 +72,17 @@ public class Lista {
 			System.out.println(aux.getInfo()); // Imprimir auxiliar
 			aux = aux.getSig(); // El valor de auxiliar se el asigna el valor del siguente al axuiliar aux++;
 		}
-		tamaño++;
 	}
 
-	/*
-	 * //Método TAMAÑO de lista public int size() { return tamaño; }
-	 */
+	// Método TAMAÑO de lista
+	// public int size() {
+	// return tamaño;
+	// }
 
-	// Ahora imagina que no tengo el atributo tamaño (contador del tamaño de la
-	// lista)
+	// Imagina que no tengo el atributo tamaño (contador del tamaño de la lista)
 	public int size() {
 		int contador = 0;
-		Nodo aux = primero;
+		Nodo aux = primero; // Variable auxiliar de tipo nodo
 		// Recorrer lista
 		while (aux != null) {
 			contador++;
@@ -103,9 +102,12 @@ public class Lista {
 
 	/*
 	 * Otra forma de saber si la lista está vacía (para que una lista esté vacía por
-	 * cojones el primer elemento debe estar vacío) public boolean isEmpty() {
-	 * return tamaño==0; }
+	 * cojones el primer elemento debe estar vacío)
 	 */
+	
+	// public boolean isEmpty() {
+	// return tamaño==0;
+	// }
 
 	// Main
 	public static void main(String[] args) {

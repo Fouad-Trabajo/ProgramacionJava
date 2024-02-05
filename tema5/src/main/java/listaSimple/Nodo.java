@@ -1,6 +1,9 @@
 package listaSimple;
 
+import java.util.Objects;
+
 public class Nodo {
+
 	private Persona info;
 	private Nodo sig;
 
@@ -15,8 +18,7 @@ public class Nodo {
 	}
 
 	public void setInfo(Persona info) {
-		this.info = info
-				;
+		this.info = info;
 	}
 
 	public Nodo getSig() {
@@ -30,6 +32,23 @@ public class Nodo {
 	@Override
 	public String toString() {
 		return "Nodo [info=" + info + ", sig=" + sig + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(info, sig);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Nodo other = (Nodo) obj;
+		return Objects.equals(info, other.info) && Objects.equals(sig, other.sig);
 	}
 
 }

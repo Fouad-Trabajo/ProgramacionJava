@@ -1,24 +1,28 @@
 package listaSimple;
 
 public interface Lista {
-		
+		//Todos los métodos son abstractos
+	
 	/**
 	 * Comprueba si la lista está o no vacía
 	 * @return true si la lista está vacía.
 	 */
 	public boolean isEmpty();
+
 	
 	/**
 	 * Devuelve la información del primer elemento
 	 * @return la info del primer elemento o Integer.MIN_VALUE si no lo encuentra.
 	 */
-	public int getFirst();
+	public Persona getFirst();
+	
 	
 	/**
 	 * Obtiene el último elemento de la lista
 	 * @return la información del último elemento de la lista o Integer.MIN_VALUE si no lo encuentra.
 	 */
-	public int getLast();
+	public Persona getLast();
+	
 	
 	/**
 	 * Inserta al inicio de la lista
@@ -26,19 +30,21 @@ public interface Lista {
 	 */
 	public void insertAtBegin(Persona info);
 	
+	
 	/**
 	 * Inserta al final de la lista
 	 * @param info información para almacenar
 	 */
 	public void insertAtEnd(Persona info);
 	
-
+	
 	/**
 	 * Inserta en una posición determinada de la lista
 	 * @param info información para almacenar
 	 * @param index posición de la lista donde se va a insertar
 	 */
 	public void insertAtPosition(Persona info, int index);
+	
 	
 	/**
 	 * Comprueba que un elemento exista dentro de la lista
@@ -55,6 +61,7 @@ public interface Lista {
 	 */
 	public Persona getElementAt(int index);
 	
+	
 	/**
 	 * Elimina el nodo que contenga el valor indicado
 	 * @param info información del nodo a borrar
@@ -62,12 +69,14 @@ public interface Lista {
 	 */
 	public boolean removeByInfo(Persona info);
 	
+	
 	/**
 	 * Elimina el nodo en la posición indicada
 	 * @param index posición del nodo a borrar
 	 * @return la persona en caso de que sea posible o null en caso de no serlo.
 	 */
 	public Persona removeAt(int index);
+	
 	
 	/**
 	 * Imprime la información de la lista
@@ -80,6 +89,7 @@ public interface Lista {
 	 * @return true si se ha podido vaciar correctamente
 	 */
 	public boolean clearList();
+	
 	
 	/**
 	 * Obtiene el número de elementos de la lista
