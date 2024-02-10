@@ -34,8 +34,7 @@ public class ListaSimple implements Lista {
 
 	}
 	/*
-	 * public boolean isEmpty() { 
-	 * return tam==0;
+	 * public boolean isEmpty() { return tam==0;
 	 * 
 	 * } //También se puede hace así
 	 */
@@ -86,8 +85,8 @@ public class ListaSimple implements Lista {
 			primero = nuevo;
 		} else {
 			Nodo aux = primero;
-			aux=primero.getSig();
-			while (aux.getSig() != null) { //Dejo de recorrer hasta que 
+			aux = primero.getSig();
+			while (aux.getSig() != null) { // Dejo de recorrer hasta que
 				aux = aux.getSig(); // Al finalizar el bucle, nos encontramos en el último elemento
 			}
 			aux.setSig(nuevo);
@@ -98,20 +97,54 @@ public class ListaSimple implements Lista {
 
 	@Override
 	public void insertAtPosition(Persona info, int index) {
-		// TODO Auto-generated method stub
+
+		Nodo nuevo = new Nodo(info);
+		Nodo aux = primero.getSig();
+		Nodo anterior = primero;
+		if (index >= tam && index < 0) {
+			System.out.println("Posición fuera de rango");
+		} else {
+			if (index == 0) {
+				insertAtBegin(info);
+			} else {
+				for (int i = 0; i < index; i++) {
+					aux = aux.getSig();
+					anterior = anterior.getSig();
+				}
+				anterior.setSig(nuevo);
+				if (aux != null) {
+					nuevo.setSig(aux);
+				}
+			}
+		}
+		tam++;
 
 	}
 
 	@Override
 	public boolean containsInfo(Persona info) {
-		// TODO Auto-generated method stub
+		Nodo aux = primero;
+		while (aux != null) {
+			if (aux.getInfo().equals(info)) { // Perosna =info
+				return true;
+			}
+			aux = aux.getSig();
+		}
 		return false;
 	}
 
 	@Override
 	public Persona getElementAt(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		Nodo aux = primero;
+		Persona persona = null;
+		if (index < 0 && index <= tam) {
+			return persona;
+		} else {
+			for (int i = 0; i < index; i++) {
+				aux = aux.getSig();
+			}
+		}
+		return aux != null ? aux.getInfo() : null; // Esto es un ternario, lo mismo que un if-else pero en una línea
 	}
 
 	@Override
