@@ -1,6 +1,6 @@
 package fouad.personal.dam.tema4;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Ej09Array {
 
@@ -9,8 +9,8 @@ public class Ej09Array {
 		Scanner sc = new Scanner(System.in);
 
 		int[][] matriz = { { 5, 9, 10 }, { 7, 0, 12 }, { 3, 1, 8 } };
-		int[] sumaFilas = new int[3];
-		int[] sumaColumnas = new int[3];
+		int[] sumaFilas = new int[matriz.length];
+		int[] sumaColumnas = new int[matriz.length];
 
 		// Imprimir array multidimensional
 		System.out.println("ARRAY MULTIDIMENSIONAL");
@@ -39,17 +39,11 @@ public class Ej09Array {
 
 		System.out.println("Suma de columnas:");
 		for (int i = 0; i < sumaColumnas.length; i++) {
-			System.out.print(sumaColumnas[i]+ " ");
+			System.out.print(sumaColumnas[i] + " ");
 		}
 
-		
-		
-
-		
 		sc.close();
 
-	} //Cierre del main
-	
-	
+	} // Cierre del main
 
 }

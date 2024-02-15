@@ -24,6 +24,7 @@ public class Ej02Array {
 				posicion=i;
 			}
 			if (num < min) {
+				
 				min = num;
 				posicion=i;
 			}
