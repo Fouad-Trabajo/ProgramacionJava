@@ -1,4 +1,4 @@
-package listaSimple;
+package listaSimple2;
 
 public interface Lista {
 		//Todos los métodos son abstractos

@@ -95,14 +95,14 @@ public class Matriz {
 	// MAX Y MIN DE ArraySumaFilas
 	private static String maxSumaFilas(int[] arraySumaFilas) {
 		System.err.println("EJERCICIO O MÉTODO 4");
-		int maxFilas = Integer.MIN_VALUE, posicion = 0;
+		int maxFilas = Integer.MIN_VALUE;
 		for (int i = 0; i < arraySumaFilas.length; i++) {
 			if (arraySumaFilas[i] > maxFilas) {
 				maxFilas = arraySumaFilas[i];
-				posicion = i;
+				position=i;
 			}
 		}
-		return "Máximo: " + maxFilas + ", indice: " + posicion;
+		return "Máximo: " + maxFilas + ", indice: " + position;
 
 	}
 

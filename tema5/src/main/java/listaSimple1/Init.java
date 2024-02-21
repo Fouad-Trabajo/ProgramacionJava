@@ -1,4 +1,4 @@
-package fouad.personal.dam.tema5;
+package listaSimple1;
 
 public class Init {
 	/*

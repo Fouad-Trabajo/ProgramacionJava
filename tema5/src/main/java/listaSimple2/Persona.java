@@ -1,4 +1,4 @@
-package listaSimple;
+package listaSimple2;
 
 import java.util.Objects;
 
