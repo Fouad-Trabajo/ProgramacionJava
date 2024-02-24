@@ -20,10 +20,10 @@ public class ListaSimple implements Lista {
 	private int tam;
 	private Nodo primero;
 	/*
-	 * Se pone @Override porque estamos implementando TODOS los métodos de una interfaz
+	 * Se pone @Override porque estamos implementando TODOS los métodos de una
+	 * interfaz
 	 */
 
-	
 	// Método a definir
 	@Override
 	public boolean isEmpty() {
@@ -76,18 +76,13 @@ public class ListaSimple implements Lista {
 		}
 		tam++; // Como he añadido un elemento, pues el tamaño de la lista aumenta
 	}
-	
+
 	/*
-	public void insertAtBegin(Persona info) {
-		Nodo nuevo= new Nodo(info);
-		if (isEmpty()) { 
-			nuevo.setSig(primero);
-		}
-		primero = nuevo
-		tam++;
-		
-	}
-	*/
+	 * public void insertAtBegin(Persona info) { Nodo nuevo= new Nodo(info); if
+	 * (isEmpty()) { nuevo.setSig(primero); } primero = nuevo tam++;
+	 * 
+	 * }
+	 */
 
 	@Override
 	public void insertAtEnd(Persona info) {
@@ -111,26 +106,49 @@ public class ListaSimple implements Lista {
 	@Override
 	public void insertAtPosition(Persona info, int index) {
 
-		Nodo nuevo = new Nodo(info);
-		Nodo aux = primero.getSig();
-		Nodo anterior = primero;
-		if (index >= tam && index < 0) {
+		if (index >= 0 && index <= tam) {
 			System.out.println("Posición fuera de rango");
-		} else {
+			Nodo nuevo = new Nodo(info);
+			Nodo aux = primero.getSig();
 			if (index == 0) {
-				insertAtBegin(info);
+				nuevo.setSig(primero);
+				primero = nuevo;
+			} else {
+				if (index == tam) {
+					while (aux.getSig() != null) {
+						aux = aux.getSig();
+					}
+				} else { // Recorro la lista hasta la posición
+					for (int i = 0; i < index; i++) {
+						aux = aux.getSig();
+					}
+					nuevo.setSig(aux.getSig());
+					aux.setSig(nuevo);
+				}
+			}
+			tam++;
+		}
+
+	}
+
+	public void insertAtPosition2(Persona info, int index) {
+
+		if (index >= 0 && index <= tam) {
+			System.out.println("Posición fuera de rango");
+			Nodo nuevo = new Nodo(info);
+			Nodo aux = primero.getSig();
+			if (index == 0) {
+				nuevo.setSig(primero);
+				primero = nuevo;
 			} else {
 				for (int i = 0; i < index; i++) {
 					aux = aux.getSig();
-					anterior = anterior.getSig();
 				}
-				anterior.setSig(nuevo);
-				if (aux != null) {
-					nuevo.setSig(aux);
-				}
+				nuevo.setSig(aux.getSig());
+				aux.setSig(nuevo);
 			}
+			tam++;
 		}
-		tam++;
 
 	}
 
@@ -162,13 +180,13 @@ public class ListaSimple implements Lista {
 
 	@Override
 	public boolean removeByInfo(Persona info) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	@Override
 	public Persona removeAt(int index) {
-
+		
 		return null;
 	}
 
@@ -183,9 +201,19 @@ public class ListaSimple implements Lista {
 	}
 
 	@Override
-	public boolean clearList() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean clearList() { // versión super simplificada
+		primero = null;
+
+		return isEmpty();
+	}
+
+	public boolean clearList2() { // versión recursiva
+		if (isEmpty()) { // Mi caso de salida --> Lista vacía
+			return true;
+		} // Caso donde la lista está llena
+		removeAt(0);  //elimino uno (el primero)
+
+		return clearList2();
 	}
 
 	@Override
