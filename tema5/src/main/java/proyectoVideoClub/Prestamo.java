@@ -1,39 +1,41 @@
 package proyectoVideoClub;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Prestamo {
+	private final int DURACION_PRESTAMO_DEFECTO=2;
 	
-	private static Date fechaPrestamo; //Esto nos puede servir como el identificaro unico
-	private Date fechaDevolucion; 
-	Cliente cliente;
-	Pelicula pelicula;
+	private static LocalDate fechaPrestamo; //Esto nos puede servir como el identificaro unico
+	private LocalDate fechaDevolucion; 
+	private Cliente cliente;
+	private Pelicula pelicula;
 	
 	
 	public Prestamo(Date fechaPrestamo, Date fecaDevolucion, Cliente cliente, Pelicula pelicula) {
-		this.fechaPrestamo = fechaPrestamo;
-		this.fechaDevolucion = fecaDevolucion;
+		this.fechaPrestamo = LocalDate.now();
+		this.fechaDevolucion = LocalDate.now().plusDays(DURACION_PRESTAMO_DEFECTO);
 		this.cliente = cliente;
 		this.pelicula = pelicula;
 	}
 
 
-	public Date getFechaPrestamo() {
+	public LocalDate getFechaPrestamo() {
 		return fechaPrestamo;
 	}
 
 
-	public void setFechaPrestamo(Date fechaPrestamo) {
+	public void setFechaPrestamo(LocalDate fechaPrestamo) {
 		this.fechaPrestamo = fechaPrestamo;
 	}
 
 
-	public Date getFechaDevolucion() {
+	public LocalDate getFechaDevolucion() {
 		return fechaDevolucion;
 	}
 
 
-	public void setFechaDevolucion(Date fechaDevolucion) {
+	public void setFechaDevolucion(LocalDate fechaDevolucion) {
 		this.fechaDevolucion = fechaDevolucion;
 	}
 
@@ -56,6 +58,8 @@ public class Prestamo {
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
 	}
+	
+	
 	
 	
 	

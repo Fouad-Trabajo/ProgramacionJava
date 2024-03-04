@@ -2,7 +2,7 @@ package proyectoVideoClub;
 
 public class Pelicula {
 
-	private int codigo;
+	private String codigo;
 	private String titulo;
 	private static int id = 0;
 
@@ -12,6 +12,38 @@ public class Pelicula {
 		this.titulo = titulo;
 		
 	}
+
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public static int getId() {
+		return id;
+	}
+
+
+	public static void setId(int id) {
+		Pelicula.id = id;
+	}
+	
+	
 
 	
 }

@@ -1,58 +1,92 @@
 package proyectoVideoClub;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
-public class VideoClub<E> {
+public class VideoClub {
 
-	private Collection<Cliente> listaClientes;
-	private Collection<Pelicula> listaPeliculas;
-	private Collection<Prestamo> listaPrestamos;
+	private List<Cliente> listaClientes;
+	private List<Pelicula> listaPeliculas;
+	private List<Prestamo> listaPrestamos;
 
-	// Constructor vacío
+	// Constructor (porque lo pide el enunciado)
 	public VideoClub() {
-		listaPrestamos= new ArrayList<Prestamo>();
-		listaClientes= new ArrayDeque();
+		this.listaClientes = new ArrayList<>();
+		this.listaPeliculas = new ArrayList<>();
+		this.listaPrestamos = new ArrayList<>();
+
 	}
 
-	
-	public E addObjeto() { // Este método es generico
-		// Ahora puedo añadir objetos de tipo Cliente, Pelicula o Prestamo
-		Cliente cliente1 = new Cliente("Rubén");
-		
-		Pelicula pelicula1 = new Pelicula("Tenet");
-		Prestamo prestamo1 = new Prestamo(null,null,null,null);
-		
-		
-		listaClientes.add(cliente1);
-		listaPeliculas.add(pelicula1);
-		listaPrestamos.add(prestamo1);
+	// Añadir cliente con el método contains de la clase List
+	public boolean addCliente(Cliente cliente) {
+		if (!listaClientes.contains(cliente)) { // Si el cliente no existe
+			listaClientes.add(cliente);
+			System.out.println("Se ha insertado correctamente");
+		}
+		return false;
 
-		System.out.println();
-		return null;
+	}
+
+	// Añadir cliente sin el método contains de la clase List
+	public void addCliente2(Cliente cliente) {
+		boolean dentroLista = false;
+		for (Cliente item : listaClientes) {
+			if (item.getNumeroCarnet() == (cliente.getNumeroCarnet())) {
+				dentroLista = true;
+				break;
+			}
+
+		}
+		if (!dentroLista) {
+			listaClientes.add(cliente);
+		}
+
+	}
+
+	// Añadir pelicula con el método contains de la clase List
+	public boolean addPelcula(Pelicula pelicula) {
+		if (!listaPeliculas.contains(pelicula)) {
+			return listaPeliculas.add(pelicula);
+		}
+		return false;
+	}
+
+	// Añadir prestamo con el método contains de la clase List
+	public boolean addPrestamo(Prestamo prestamo) {
+		if (!listaPrestamos.contains(prestamo)) {
+			return listaPrestamos.add(prestamo);
+		}
+		return false;
+
 	}
 
 	public Pelicula buscarPelicula(int codigo) {
-		Scanner sc= new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce el id de la película: ");
-		int idPelicula=sc.nextInt();
-		
-		
-		return null;
+		int idPelicula = sc.nextInt();
+		Pelicula pelicula = null;
+		for (int i = 0; i < listaPeliculas.size(); i++) {
+			if (listaPeliculas.get(i).getCodigo().equals(codigo)) {
+				pelicula = listaPeliculas.get(i);
+				break;
+
+			}
+
+		}
+
+		return pelicula;
 	}
 
 	public Cliente buscarCliente(int numeroCarnet) {
 		return null;
 	}
 
-	public List<E> getPrestamos() {
+	public List getPrestamos() {
 		return null;
 	}
 
-	public List<E> getPrestamos(int numeroCarnet) {
+	public List getPrestamos(int numeroCarnet) {
 		return null;
 	}
 
@@ -60,7 +94,7 @@ public class VideoClub<E> {
 		return false;
 	}
 
-	public List<E> prestamosMorosos() {
+	public List prestamosMorosos() {
 		return null;
 	}
 
