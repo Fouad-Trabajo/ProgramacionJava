@@ -8,7 +8,7 @@ public class Pelicula {
 
 
 	public Pelicula(String titulo) {
-        this.codigo = id++;
+        this.codigo = codigo+(id++);
 		this.titulo = titulo;
 		
 	}

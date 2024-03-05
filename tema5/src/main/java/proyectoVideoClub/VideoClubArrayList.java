@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class VideoClub {
+public class VideoClubArrayList {
 
 	private List<Cliente> listaClientes;
 	private List<Pelicula> listaPeliculas;
 	private List<Prestamo> listaPrestamos;
 
 	// Constructor (porque lo pide el enunciado)
-	public VideoClub() {
+	public VideoClubArrayList() {
 		this.listaClientes = new ArrayList<>();
 		this.listaPeliculas = new ArrayList<>();
 		this.listaPrestamos = new ArrayList<>();

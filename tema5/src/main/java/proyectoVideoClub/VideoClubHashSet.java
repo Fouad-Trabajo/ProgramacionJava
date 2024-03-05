@@ -38,7 +38,7 @@ public class VideoClubHashSet {
 		System.out.print("Introduce el id de la película: ");
 		int idPelicula = sc.nextInt();
 
-		sc.close();
+		sc.close(); //Cierre del scanner
 		return null;
 	}
 
