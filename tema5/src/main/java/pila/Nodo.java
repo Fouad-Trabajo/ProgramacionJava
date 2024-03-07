@@ -1,7 +1,7 @@
 package pila;
 
 public class Nodo {
-
+	
 	private Integer info;
 	private Nodo sig;
 
@@ -30,5 +30,4 @@ public class Nodo {
 	public String toString() {
 		return "Nodo [info=" + info + ", sig=" + sig + "]";
 	}
-
 }

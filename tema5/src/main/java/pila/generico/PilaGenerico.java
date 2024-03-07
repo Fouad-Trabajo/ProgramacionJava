@@ -1,8 +1,8 @@
-package pila;
+package pila.generico;
 
-public class Pila {
-
-	private Nodo cima;
+public class PilaGenerico<T> {
+	
+	private NodoGenerico<T> cima;
 	private int tam;
 
 	// Size
@@ -15,8 +15,8 @@ public class Pila {
 		return cima == null;
 	}
 
-	public void push(Integer info) {
-		Nodo nuevo = new Nodo(info);
+	public void push(T info) {
+		NodoGenerico<T> nuevo = new NodoGenerico<T>(info);
 		if (!isEmpty()) {
 			nuevo.setSig(cima);
 		}
@@ -24,9 +24,9 @@ public class Pila {
 		tam++;
 	}
 
-	public Integer pop() {
+	public T pop() {
 		if (!isEmpty()) {
-			Nodo borrar = cima; // creo ese nodo para almacenar lo que voy a borrar
+			NodoGenerico<T> borrar = cima; // creo ese nodo para almacenar lo que voy a borrar
 			cima = cima.getSig();
 			borrar.setSig(null);
 			tam--;
@@ -35,7 +35,7 @@ public class Pila {
 		return null;
 	}
 
-	public Integer peak() {
+	public T peak() {
 		if (!isEmpty()) {
 			return cima.getInfo();
 		}
@@ -45,7 +45,7 @@ public class Pila {
 	public void print() {
 		System.out.println("La Pila contiene: ");
 		if (!isEmpty()) {
-			Nodo aux = cima;
+			NodoGenerico<T> aux = cima;
 			System.out.println("Cima");
 			while (aux != null) {
 				System.out.println("|" + aux.getInfo() + "|");
