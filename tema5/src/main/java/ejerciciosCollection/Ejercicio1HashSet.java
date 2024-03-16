@@ -21,13 +21,15 @@ public class Ejercicio1HashSet {
 
 			// Introducir número de usuario a la lista HashSet
 			collectionNumeros.add(numUsuario);
-			
+			/*
 			if(!collectionNumeros.add(numUsuario)) {
 				System.out.println("Ese valor ya existe");
 			}
+			*/
 		}
-
+			
 		sc.close();
+		
 	}
 
 	// Cálculo de la suma de los números

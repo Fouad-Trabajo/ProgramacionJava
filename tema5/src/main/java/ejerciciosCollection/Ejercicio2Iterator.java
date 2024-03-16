@@ -81,8 +81,8 @@ public class Ejercicio2Iterator {
 
 		// Imprime con forEach
 		Ejercicio2Iterator.recorrerListaForEeach();
-		;
 		System.out.println("\n"); // Salto de línea
+		
 	}
 
 }

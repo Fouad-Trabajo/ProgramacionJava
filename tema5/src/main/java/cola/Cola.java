@@ -53,6 +53,7 @@ public class Cola<T> {
 		} // Si está vacía, devuelve null
 		return null;
 	}
+	
 
 	public T front() { // es lo mismo que el peak de pilas (mostrar sin borrar)
 		if (!isEmpty()) {
@@ -74,11 +75,10 @@ public class Cola<T> {
 			System.out.println("Está vacíaa");
 		}
 	}
-	
-	
+
 	public void print1() {
 		System.out.println("La cola contiene: ");
-		if(!isEmpty()) {
+		if (!isEmpty()) {
 			System.out.println("último");
 			System.out.println("");
 		}

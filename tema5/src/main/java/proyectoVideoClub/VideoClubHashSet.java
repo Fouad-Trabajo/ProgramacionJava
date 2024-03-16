@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class VideoClubHashSet {
 
@@ -14,7 +15,7 @@ public class VideoClubHashSet {
 
 	// Constructor vacío
 	public VideoClubHashSet() {
-		this.listaClientes = new HashSet<>();
+		this.listaClientes = new TreeSet<>();
 		this.listaPeliculas = new HashSet<>();
 		this.listaPrestamos = new HashSet<>();
 

@@ -11,14 +11,7 @@ public class Rectangulo {
 			this.ancho=ancho;
 			
 			
-		}for(
-
-	int i = 0;i<ancho;i++)
-	{
-		pintaLinea(0, largo);
-		System.out.println();
-
-	}
+		
 }
 
 }
