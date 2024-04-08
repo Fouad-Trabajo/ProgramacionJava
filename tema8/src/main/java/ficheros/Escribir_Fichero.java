@@ -15,13 +15,13 @@ public class Escribir_Fichero {
 	public static class Write_Fichero {
 		public void escribe() {
 			try {
-				FileWriter escritura = new FileWriter("C:/Users/Fouad/Desktop/EjemEclipse.txt");           
+				FileWriter escritura = new FileWriter("C:/Users/Fouad/Desktop/EjemEclipse.txt", true);           
 				
 				String texto ="Hola mundo esto es un fichero,\n"
 						+ "este texto lo he escrito desde Eclipse";
 				
 				escritura.write(texto);
-				escritura.write("\nEsto es una prueba: " + 65);
+				escritura.write("\nEsto es una prueba: " + 65 + "\n\n");
 				
 				escritura.close();
 			} catch (Exception e) {
