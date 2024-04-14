@@ -1,4 +1,4 @@
-package ficheros;
+package ficheros.ejercicios;
 
 import java.io.FileWriter;
 

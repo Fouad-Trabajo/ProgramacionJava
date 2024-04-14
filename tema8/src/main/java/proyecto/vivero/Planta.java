@@ -1,13 +1,18 @@
-package vivero;
+package proyecto.vivero;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Planta implements Serializable { // Lo hacemos serializable
-	/* Serializar: Convertir un objeto en una sucesión de bytes para poder guardarlo
-	en un espacio informático
-	Deserializar: Es lo contrario, convierte una sucesión de bytes en objeto
-	*/
+public class Planta implements Serializable { // Eso hace factible de que sea acumulada en un archivo bianario
+
+	private static final long serialVersionUID = 1883111522000254687L; // Version
+	/*
+	 * Lo hacemos serializable
+	 * 
+	 * Serializar: Convertir un objeto en una sucesión de bytes para poder guardarlo
+	 * en un espacio informático Deserializar: Es lo contrario, convierte una
+	 * sucesión de bytes en objeto
+	 */
 	private int código;
 	private String nombreVulgar;
 	private String nombreCientífico;
@@ -15,7 +20,6 @@ public class Planta implements Serializable { // Lo hacemos serializable
 	private int cantidad;
 
 	public Planta(int código, String nombreVulgar, String nombreCientífico, double precio, int cantidad) {
-		super();
 		this.código = código;
 		this.nombreVulgar = nombreVulgar;
 		this.nombreCientífico = nombreCientífico;

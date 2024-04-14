@@ -5,7 +5,7 @@ public class Persona {
 
 	private final String nombre;
     private int edad;
-    private final char sexo;
+    private  char sexo; //Se supone que esto es un final
     private double peso;
     private double altura;
     private String DNI;

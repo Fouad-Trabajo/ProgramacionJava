@@ -9,13 +9,13 @@ public class Ejercicio02 {
 
 		//Declaración array
 		int [] enteros= new int [3];
-		int min=Integer.MAX_VALUE, max=Integer.MIN_VALUE;
+		int min=Integer.MAX_VALUE, max=Integer.MIN_VALUE, posicion=0;
 		
 		//Pedir al usuario 10 números
 		for (int i=0;i<enteros.length;i++) {
 			System.out.print("Introduce numero["+i+"]: ");
 			int numero=sc.nextInt();
-			int posicion=0;
+			posicion=+1;
 			enteros[i]=numero; //Asignar número a elemento del array
 				if(numero>max) {
 					max=numero;
