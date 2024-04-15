@@ -17,20 +17,21 @@ public class Init {
 	private static final String RUTA = "C:/Users/Fouad/Desktop/";
 
 	static Path original = Paths.get(RUTA + "plantas.bin");
-	Path aux = Paths.get(RUTA + "aux.bin");
+	static Path aux = Paths.get(RUTA + "aux.bin");
 
 	public static void main(String[] args) {
-		// Declaramos una lista de tipo plantas para luego guardalo en el fichero
-		List<Planta> plantas = new ArrayList<>(); // Vamos a serializar esta coleccion
+		CrearFichero creado = new CrearFichero();
+		creado.main(args);
 
 		// Actualizar vivero
-		Init.actualizarLista_Fichero(original);
-		Init.imprimirVivero_lista_fichero();
+		actualizar_Fichero(original, aux);
+
 		// Imprimir_vivero
+		imprimirVivero_fichero(aux);
 
 	}
 
-	public static void actualizarLista_Fichero(Path original) {
+	public static void actualizar_Fichero(Path original) {
 
 		// Introducir objetos de tipo Planta en la lista
 		List<Planta> listaPlantas = new ArrayList<>();
@@ -40,7 +41,7 @@ public class Init {
 
 			for (;;) { // bucle infinito - while true
 				try {
-					listaPlantas.add((Planta)ois.readObject()); // Casting
+					listaPlantas.add((Planta) ois.readObject()); // Casting
 
 					// Estos cath están al mismo nivel, no están anidados
 				} catch (EOFException e) { // Esto sobraría la verdad
@@ -52,8 +53,8 @@ public class Init {
 				}
 			}
 
-		} catch (IOException e) { // Se puede poner así o simplemente poner el padre
-									// "Exception"
+		} catch (IOException e) {
+
 			System.err.println(e);
 			e.printStackTrace(); // Pila de excepciones imprimibles
 		}
@@ -68,7 +69,7 @@ public class Init {
 				p.setPrecio(p.getPrecio() * 0.6); // 40% descuento
 			}
 		}
-		System.out.println("He actualizado los precios");
+		System.out.println("He actualizado los precios pero no están metidos en en el fichero todavía");
 
 		// Meter los objetos cambiados nuevamente en la lista
 		try (OutputStream os = Files.newOutputStream(original); ObjectOutputStream oos = new ObjectOutputStream(os);)
@@ -77,7 +78,7 @@ public class Init {
 			System.out.println("Comienzo de la escritura de los objetos con el precio cambiado");
 			for (Planta planta : listaPlantas) {
 				oos.writeObject(planta);
-				
+
 			}
 
 		} catch (Exception e) {
@@ -86,27 +87,68 @@ public class Init {
 
 	}
 
-	public static void imprimirVivero_lista_fichero() {
-		try (InputStream is = Files.newInputStream(original); ObjectInputStream ois = new ObjectInputStream(is);)
+	// Sobrecargar método
+	public static void actualizar_Fichero(Path original, Path aux) {
+
+		try (InputStream is = Files.newInputStream(original);
+				ObjectInputStream ois = new ObjectInputStream(is);
+				OutputStream os = Files.newOutputStream(aux);
+				ObjectOutputStream oos = new ObjectOutputStream(os)) {
+			// Acciones que va ha hacer el try pero no están en observación
+			System.out.println("Comienzo de la lectura...");
+
+			for (;;) { // bucle infinito - while true
+				try {
+					Planta p1 = (Planta) ois.readObject();
+					if (p1.getCantidad() < 10) {
+						p1.setPrecio(p1.getPrecio() * 0.8); // 20% descuento
+					} else if (p1.getCantidad() <= 50) { // Coje la cantidad entre 50 y 10 incluidos
+						p1.setPrecio(p1.getPrecio() * 0.7);
+					} else { // planta.getCantidad()>50
+						p1.setPrecio(p1.getPrecio() * 0.6); // 40% descuento
+					}
+
+					oos.writeObject(p1);
+
+					// Estos cath están al mismo nivel, no están anidados
+				} catch (EOFException e) { // Esto sobraría la verdad
+					System.err.println("Fin de la lectura del fichero auxiliar");
+					break; // Esto es para detener el bucle
+				} catch (ClassNotFoundException e) {
+					System.out.println("Error, clase no encontrada");
+					break;
+				}
+			}
+
+		} catch (IOException e) {
+
+			System.err.println(e);
+			e.printStackTrace(); // Pila de excepciones imprimibles
+		}
+	}
+
+	// Método imprimir vivero(fichero)
+	public static void imprimirVivero_fichero(Path file) {
+		try (InputStream is = Files.newInputStream(file); ObjectInputStream ois = new ObjectInputStream(is);)
 
 		{
-			while(true) { //Bucle infinito
+			while (true) { // Bucle infinito
 				try {
 					Planta planta = (Planta) ois.readObject();
 					System.out.println(planta);
 				} catch (EOFException e) {
 					System.err.println("Fin de la lectura");
 					break;
-				}catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) {
 					System.err.println("Error, clase no encontrada");
 					break;
 				}
-				
-				// is.close(); no hace falta cerrar los objetos de lectura, poruqe se encarga de hacerlo el try
+
+				// no hace falta cerrar los objetos de lectura, porque se encarga el try
+				// is.close();
 				// ois.close();
 			}
 
-			
 		} catch (IOException e) {
 			System.out.println(e);
 		}

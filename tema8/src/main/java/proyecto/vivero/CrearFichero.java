@@ -1,8 +1,5 @@
 package proyecto.vivero;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -14,10 +11,9 @@ public class CrearFichero { // Integer es una clase envolvente
 	private static final String RUTA = "C:/Users/Fouad/Desktop/";
 
 	public static void main(String args[]) throws ArithmeticException { // Eso significa que puede lanzar una excepción
-		Crear creando = new Crear();
-		creando.escrituraLectura();
-
+	
 		Path file = Paths.get(RUTA + "plantas.bin");
+	
 
 		try (OutputStream os = Files.newOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(os);) {
 			// Se somete a observación este pedazo de código dentro del try
@@ -50,28 +46,6 @@ public class CrearFichero { // Integer es una clase envolvente
 
 	}
 
-	static class Crear {
-		Planta planta = new Planta(0, null, null, 0, 0);
-
-		public void escrituraLectura() {
-			try {
-				// Flujo de salida
-				ObjectOutputStream escribiendo_fichero = new ObjectOutputStream(
-						new FileOutputStream("C:/Users/Fouad/Desktop/ArrayObjetos.bin"));
-				escribiendo_fichero.writeObject(planta);
-				escribiendo_fichero.close();
-
-				// Flujo de entrada
-				ObjectInputStream recuperando_fichero = new ObjectInputStream(
-						new FileInputStream("C:/Users/Fouad/Desktop/ArrayObjetos.bin"));
-				Planta planta_recuperada = (Planta) recuperando_fichero.readObject(); // Casting
-				recuperando_fichero.close();
-
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		}
-
-	}
+	
 
 }
