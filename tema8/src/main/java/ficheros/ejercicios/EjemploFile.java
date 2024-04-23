@@ -12,7 +12,7 @@ public class EjemploFile {
 		contructores.info();
 	}
 
-	// Clase inherit
+	// Inherit class
 	public static class ConstructoresFile {
 		File archivo = new File("Primavera.txt");
 

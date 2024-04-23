@@ -1,5 +1,6 @@
 package proyecto.vivero;
 
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -10,11 +11,8 @@ public class CrearFichero { // Integer es una clase envolvente
 
 	private static final String RUTA = "C:/Users/Fouad/Desktop/";
 
-	public static void main(String args[]) throws ArithmeticException { // Eso significa que puede lanzar una excepción
-	
+	public void cargarObjetos() {
 		Path file = Paths.get(RUTA + "plantas.bin");
-	
-
 		try (OutputStream os = Files.newOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(os);) {
 			// Se somete a observación este pedazo de código dentro del try
 
@@ -35,17 +33,12 @@ public class CrearFichero { // Integer es una clase envolvente
 			oos.writeObject(new Planta(9, "Romero", "Salvia", 4.5, 68));
 			oos.writeObject(new Planta(10, "Azalea", "ubducyn", 10, 20));
 
-			// Cerramos los objetos de tipo escritura
-			os.close();
-			oos.close();
-
-		} catch (Exception e) { // Na má cerrar el try, se abre el catch
+		} catch (IOException e) { // Na má cerrar el try, se abre el catch
 			System.out.println(e);
+			System.err.println("Ha fallado la escritura");
 			e.printStackTrace(); // Imprimir la pila de errores que se ha ido acumulando
 		}
 
 	}
-
-	
 
 }

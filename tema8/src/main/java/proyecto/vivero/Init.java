@@ -20,8 +20,10 @@ public class Init {
 	static Path aux = Paths.get(RUTA + "aux.bin");
 
 	public static void main(String[] args) {
-		CrearFichero creado = new CrearFichero();
-		creado.main(args);
+		
+		// Llamada a la clase que crea el fichero
+		CrearFichero creandoFichero = new CrearFichero();
+		creandoFichero.cargarObjetos();
 
 		// Actualizar vivero
 		actualizar_Fichero(original, aux);
@@ -42,7 +44,6 @@ public class Init {
 			for (;;) { // bucle infinito - while true
 				try {
 					listaPlantas.add((Planta) ois.readObject()); // Casting
-
 					// Estos cath están al mismo nivel, no están anidados
 				} catch (EOFException e) { // Esto sobraría la verdad
 					System.err.println("Fin de la lectura");
@@ -59,6 +60,7 @@ public class Init {
 			e.printStackTrace(); // Pila de excepciones imprimibles
 		}
 
+		System.out.println("Actualizando los precios...");
 		// Actualizar precio
 		for (Planta p : listaPlantas) {
 			if (p.getCantidad() < 10) {
@@ -81,7 +83,7 @@ public class Init {
 
 			}
 
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -132,6 +134,7 @@ public class Init {
 		try (InputStream is = Files.newInputStream(file); ObjectInputStream ois = new ObjectInputStream(is);)
 
 		{
+			System.out.println("Comienzo de la lectura...");
 			while (true) { // Bucle infinito
 				try {
 					Planta planta = (Planta) ois.readObject();
@@ -144,9 +147,10 @@ public class Init {
 					break;
 				}
 
-				// no hace falta cerrar los objetos de lectura, porque se encarga el try
-				// is.close();
-				// ois.close();
+				//no hace falta cerrar los objetos de lectura, porque se encarga el try
+				//is.close();
+				//ois.close();
+				
 			}
 
 		} catch (IOException e) {

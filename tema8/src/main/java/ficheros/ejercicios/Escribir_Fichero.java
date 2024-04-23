@@ -23,7 +23,7 @@ public class Escribir_Fichero {
 				escritura.write(texto);
 				escritura.write("\nEsto es una prueba: " + 65 + "\n\n");
 				
-				escritura.close();
+				escritura.close(); //Esto no hace falta hacerlo
 			} catch (Exception e) {
 				System.err.println("No se ha podido escribir en el fichero");
 			}
