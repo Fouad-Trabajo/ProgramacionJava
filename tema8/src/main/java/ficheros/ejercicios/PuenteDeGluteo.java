@@ -13,15 +13,15 @@ public class PuenteDeGluteo {
 
 		// Lectura de foto
 		Imagen imagen1 = new Imagen();
-		imagen1.imprimirFoto();
+		int [] array = imagen1.imprimirFoto();
 
 		// Escritura de foto
-		crearFichero(array[]);
+		imagen1.crearFichero(array );
 	}
 
 	static class Imagen {
 
-		public void imprimirFoto() {
+		public int[] imprimirFoto() {
 			List<Integer> lista = new ArrayList<>();
 			int[] array = new int[24339];
 			int contador = 0;
@@ -56,6 +56,7 @@ public class PuenteDeGluteo {
 			}
 
 			System.out.println("El número de lecturas es: " + contador);
+			return array;
 		}
 
 		public  void crearFichero(int[] array_nuevo_fichero) {

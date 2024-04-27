@@ -1,8 +1,8 @@
 package ficheros.ejercicios;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.Scanner;
 
 public class CopiaDe {
@@ -24,9 +24,23 @@ public class CopiaDe {
 		String nombre = sc.nextLine();
 
 		try (FileInputStream fis = new FileInputStream(RUTA + nombre);
-				ObjectInputStream oos = new ObjectInputStream(fis)) {
-			String holaString = (String) oos.read();
-			System.out.println("Comienzo de la escritura");
+				FileOutputStream fos = new FileOutputStream(RUTA + "copia_de_" + nombre)){
+						
+					boolean fileEnd= false;
+					
+					while(!fileEnd) {
+						
+						int inputByte=fis.read();
+						if(inputByte==-1) {
+							fileEnd=true;
+						}else {
+							 fos.write(inputByte);
+						}
+								System.out.println("Comienzo de la escritura");
+								
+					}
+					sc.close();
+				
 		} catch (IOException e) {
 			System.out.println("Error de E/S");
 		}
