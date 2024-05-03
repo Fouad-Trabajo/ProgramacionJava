@@ -1,4 +1,4 @@
-package ultimosejercicios.personas;
+package ultimosejercicios.iphone;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -14,7 +14,6 @@ public class MyObjectOutputStream extends ObjectOutputStream {
 
 	// Constructores
 	public MyObjectOutputStream() throws IOException, SecurityException {
-		super();
 		// TODO Auto-generated constructor stub
 	}
 

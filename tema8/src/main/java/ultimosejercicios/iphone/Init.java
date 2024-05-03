@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class Init {
 
 		// Método 1
 		public void escribirFichero() {
-			try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ficheroIphones.dat"))) {
+			try (MyObjectOutputStream oos = new MyObjectOutputStream(new FileOutputStream("ficheroIphones.dat"))) {
 
 				// Lista con el contenido/objetos que ha escrito el usuario por pantalla
 				List<Iphone> listaIphones = PedirObjetos.instanciarObjetos();
