@@ -2,39 +2,38 @@ package ultimosejercicios.banco;
 
 public class Contador {
 
-	private String valor;
-	private int minimo;
-	private int maximo;
+	private int valor;
+	private final int minimo = 0;
+	private final int maximo = 10;
 
-	public Contador(String valor, int minimo, int maximo) {
-		super();
+	public Contador(int valor) {
 		this.valor = valor;
-		this.minimo = minimo;
-		this.maximo = maximo;
 	}
 
-	public String getValor() {
+	public int getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 
-	public int getMinimo() {
-		return minimo;
+	public void incrementar() throws LimiteInferiorSuperior {
+		for (;;) {
+			valor += 1;
+			if (valor > maximo) {
+				throw new LimiteInferiorSuperior();
+			}
+		}
 	}
 
-	public void setMinimo(int minimo) {
-		this.minimo = minimo;
-	}
-
-	public int getMaximo() {
-		return maximo;
-	}
-
-	public void setMaximo(int maximo) {
-		this.maximo = maximo;
+	public void decrementar() throws LimiteInferiorSuperior {
+		while (true) {
+			valor -= 1;
+			if (valor < minimo) {
+				throw new LimiteInferiorSuperior();
+			}
+		}
 	}
 
 	@Override
